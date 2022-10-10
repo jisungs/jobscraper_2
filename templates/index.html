@@ -1,0 +1,91 @@
+{% include "header.html" %}
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Search</h1>
+                        
+                    </div>
+
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+                                         <div class="col-xl-10 col-lg-10" >
+                            <!-- Basic Card Example -->
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Job Search for {{keyword}}</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="d-none d-sm-inline-block form-inline col-xl-12 col-lg-12 col-sm-12 col-md-12 navbar-search" method="POST">
+                                            <div class="input-group">
+                                                <input name="keyword" type="text" class="form-control bg-light border-0 small" placeholder="Input your skill." aria-label="Search" aria-describedby="basic-addon2">
+                                                <div class="input-group-append">
+                                                        <button class="btn btn-primary" type="submit">
+                                                            <i class="fas fa-search fa-sm"></i>
+                                                            <a href="#"></a>
+                                                        </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+
+                    <div class= "row">
+                      {%for job in jobs%}
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                {{job.company}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{job.region}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{job.position}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <a href="{{job.link}}">Go to </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {%endfor%}
+
+                        {%for job in rk_jobs%}
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                {{job.company}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{job.position}}</div>
+                                            
+                                            {%for j in job.info%}
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{j}}</div>
+                                            {%endfor%}
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <br>
+                                                <a href="{{job.link}}">Go to </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {%endfor%}
+                        
+                    </div>
+
+
+
+                    
+                <!-- /.container-fluid -->
+
+
+{% include 'footer.html'%}
+  
