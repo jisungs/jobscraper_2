@@ -11,13 +11,12 @@ app = Flask(__name__)
 # for job in jobs:
 #     print(job)
 #     print("------------------")
-
+db = {}
 
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
         keyword = request.form.get("keyword")
-        print(keyword)
         jobs= extract_wwr_jobs(keyword)
         rk_jobs = remoteok_jobs(keyword)
         return render_template("index.html", keyword = keyword, jobs=jobs, rk_jobs=rk_jobs)
